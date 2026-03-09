@@ -33,15 +33,6 @@
                            transition-all duration-300
                            group-hover:scale-105"
                 />
-
-                <span
-                    class="hidden sm:block font-extrabold tracking-wide
-                           text-transparent bg-clip-text
-                           bg-gradient-to-r from-indigo-600 to-purple-600
-                           transition-all duration-300"
-                    :class="scrolled ? 'text-base' : 'text-lg'"
-                >
-                </span>
             </a>
 
             {{-- ================= CENTER MENU ================= --}}
@@ -62,7 +53,6 @@
                     >
                         <span x-text="item.label"></span>
 
-                        {{-- underline --}}
                         <span
                             class="absolute -bottom-1 left-0 h-[2px]
                                    bg-gradient-to-r from-indigo-600 to-purple-600
@@ -75,14 +65,28 @@
                 </template>
             </div>
 
-            {{-- ================= RIGHT CTA ================= --}}
+            {{-- ================= DOWNLOAD CV BUTTON ================= --}}
             <div class="ml-auto hidden md:flex z-10">
-                <a href="/#contact"
-                   @click="active='contact'"
-                   class="px-5 py-2 rounded-xl text-white text-sm font-semibold
+                <a href="{{ asset('cv/CV_M_Fadhilah_DNR.pdf') }}"
+                   download
+                   class="flex items-center gap-2
+                          px-5 py-2 rounded-xl text-white text-sm font-semibold
                           bg-gradient-to-r from-indigo-600 to-purple-600
                           hover:opacity-90 transition shadow-md">
-                    Hire Me
+
+                    {{-- icon download --}}
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="h-4 w-4"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M12 4v10m0 0l-4-4m4 4l4-4M4 20h16"/>
+                    </svg>
+
+                    Download CV
                 </a>
             </div>
 
@@ -119,6 +123,7 @@
                border-t border-indigo-100"
     >
         <div class="px-6 py-6 space-y-4 text-sm font-medium">
+
             <template x-for="item in [
                 {id:'home', label:'Home'},
                 {id:'about', label:'About'},
@@ -135,14 +140,16 @@
                 ></a>
             </template>
 
-            <a href="/#contact"
-               @click="open=false; active='contact'"
+            {{-- DOWNLOAD CV MOBILE --}}
+            <a href="{{ asset('cv/CV_M_Fadhilah_DNR.pdf') }}"
+               download
                class="mt-4 block w-full text-center
                       px-5 py-3 rounded-xl text-white
                       bg-gradient-to-r from-indigo-600 to-purple-600
                       shadow-md">
-                Hire Me
+                Lihat CV
             </a>
+
         </div>
     </div>
 </nav>
